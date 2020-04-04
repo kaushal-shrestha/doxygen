@@ -1508,9 +1508,13 @@ static void newFunction(yyscan_t yyscanner)
     // http://docs.python.org/ref/specialnames.html
     yyextra->current->protection=Public;
   }
-  else if (yyextra->current->name.at(0)=='_')
+  else if (yyextra->current->name.left(2)=='__')
   {
     yyextra->current->protection=Private;
+  }
+  else if (yyextra->current->name.at(0)=='_')
+  {
+    yyextra->current->protection=Protected;
   }
 }
 
